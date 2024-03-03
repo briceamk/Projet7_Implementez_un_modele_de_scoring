@@ -12,14 +12,14 @@ if __name__ == "__main__":
 
     st.title('Implementez un modèle de scoring')
     if get_id() is None:
-        data = requests.get(f"http://localhost:1234/load_initial_data/v2")
+        data = requests.get(f"http://localhost:3000/load_initial_data/v2")
         ids = data.json() and data.json()['ids'] or False
         values = data.json() and data.json()['values'] or False
         print('Intial session state:',list( ids.values())[0] )
         st.session_state['ID'] =list(ids.values())[0]
 
     else:
-        data = requests.get(f"http://localhost:1234/load_data/v2/"+ str(get_id()))
+        data = requests.get(f"http://localhost:3000/load_data/v2/"+ str(get_id()))
         ids = data.json() and data.json()['ids'] or False
         values = data.json() and data.json()['values'] or False
 
@@ -100,7 +100,7 @@ if __name__ == "__main__":
         if submit_btn:
             # st.write(pd.DataFrame(values))
 
-            req = requests.get(f"http://localhost:1234/predict?id={sk_id}")
+            req = requests.get(f"http://localhost:3000/predict?id={sk_id}")
             req_json = req.json()
             proba = np.round(req_json["proba"][0][1], decimals=3)
 
