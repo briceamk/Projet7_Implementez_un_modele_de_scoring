@@ -27,12 +27,26 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
+      - name: Export environment variable
+        run: |
+           FLASK_APP=backend.py
+           FLASK_ENV=development
+           FLASK_DEBUG=0
+           echo "FLASK_APP=$FLASK_APP" >> $GITHUB_ENV
+           echo "FLASK_ENV=$FLASK_ENV" >> $GITHUB_ENV
+           echo "FLASK_DEBUG=$FLASK_DEBUG" >> $GITHUB_ENV
+
       - name: Print debugging information
         run: |
           echo "Python Version: $(python --version)"
           echo "Working Directory: $(pwd)"
           echo "Contents of Working Directory: $(ls -l)"
           echo "Contents of site-packages: $(ls -l venv/lib/python*/site-packages)"
+          echo "Flask App name: ${{env.FLASK_APP}}"
+          echo "Flask Env name: ${{env.FLASK_ENV}}"
+          echo "Flask Debug: ${{env.FLASK_DEBUG}}"
+
+     
 
       - name: Run Backend Flask App
-        run: python backend.py
+        run: flask run

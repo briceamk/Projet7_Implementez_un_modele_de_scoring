@@ -1,9 +1,8 @@
-from tools import post_treatment, pre_encoded_feature, impute_data, scaling_data, encode_data_2
+from .tools import plot_amount, post_treatment, pre_encoded_feature, impute_data, scaling_data, encode_data_2
 from flask import Flask, request, jsonify
 from flask_caching import Cache
 import pandas as pd
 import pickle
-from tools import plot_amount
 
 import numpy as np
 import mlflow
@@ -28,9 +27,9 @@ def graph_numeric(data, name, value):
 
 
 def load_process():
-    path = './input/application_test.csv'
+    path = 'input/application_test.csv'
 
-    save_dir = './obj_save/'
+    save_dir = 'obj_save/'
 
     objects_to_save = ["data", "model", "_scaler", "_impute", "_le", "feature_le_encoded", "_ohe"]
     loaded_objects = {}
