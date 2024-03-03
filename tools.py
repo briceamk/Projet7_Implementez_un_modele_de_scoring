@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder, PolynomialFeatures, MinMaxScaler, OneHotEncoder
@@ -10,7 +9,6 @@ from matplotlib.ticker import MaxNLocator, AutoMinorLocator
 # imputer for handling missing values
 from sklearn.impute import SimpleImputer
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 import seaborn as sns
 import streamlit as st
 
@@ -208,9 +206,6 @@ def log_classification(app_train, train_labels, seed):
         train = app_train.copy()
 
     train, test, y_train_labels, y_test_labels = train_test_split(train, train_labels, test_size=0.2, random_state=seed)
-
-    # Feature names
-    features = list(app_train.columns)
 
     # Median imputation of missing values
     imputer = SimpleImputer(strategy='median')

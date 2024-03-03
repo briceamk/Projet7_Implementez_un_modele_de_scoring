@@ -46,7 +46,8 @@ jobs:
           echo "Flask Env name: ${{env.FLASK_ENV}}"
           echo "Flask Debug: ${{env.FLASK_DEBUG}}"
 
-     
+#      - name: Run streamlit App
+#        run: streamlit run web.py
 
       - name: Run Backend Flask App
         run: flask run

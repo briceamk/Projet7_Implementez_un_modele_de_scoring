@@ -153,7 +153,6 @@ def get_scaling_data(df):
     data = df.copy()
 
     if 'TARGET' in data.columns:
-        y = data['TARGET']
         data = data.drop('TARGET', axis=1)
         # Repeat with the scaler
         scaler.fit(data)

@@ -12,14 +12,14 @@ if __name__ == "__main__":
 
     st.title('Implementez un modèle de scoring')
     if get_id() is None:
-        data = requests.get(f"http://localhost:3000/load_initial_data/v2")
+        data = requests.get("http://localhost:3000/load_initial_data/v2")
         ids = data.json() and data.json()['ids'] or False
         values = data.json() and data.json()['values'] or False
         print('Intial session state:',list( ids.values())[0] )
         st.session_state['ID'] =list(ids.values())[0]
 
     else:
-        data = requests.get(f"http://localhost:3000/load_data/v2/"+ str(get_id()))
+        data = requests.get("http://localhost:3000/load_data/v2/" + str(get_id()))
         ids = data.json() and data.json()['ids'] or False
         values = data.json() and data.json()['values'] or False
 
