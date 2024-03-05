@@ -1,4 +1,4 @@
-from .tools import plot_amount, post_treatment, pre_encoded_feature, impute_data, scaling_data, encode_data_2
+from tools import plot_amount, post_treatment, pre_encoded_feature, impute_data, scaling_data, encode_data_2
 from flask import Flask, request, jsonify
 from flask_caching import Cache
 import pandas as pd
