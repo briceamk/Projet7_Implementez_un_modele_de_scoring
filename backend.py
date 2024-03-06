@@ -23,6 +23,7 @@ def graph_numeric(data, name, value):
     fig.savefig(f'{name}.png')
 
 
+
 def load_process():
     path = 'input/application_test.csv'
 
